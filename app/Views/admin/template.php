@@ -12,7 +12,13 @@
 
         <!-- Content -->
         <div class="content-wrapper">
-            <?= $this->renderSection('content'); ?>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 mt-3 mx-auto">
+                        <?= $this->renderSection('content'); ?>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <?= $this->include('admin/_partials/footer'); ?>
