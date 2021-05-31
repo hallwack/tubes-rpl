@@ -8,6 +8,8 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="<?= base_url('themes'); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="<?= base_url('themes'); ?>/plugins/select2/js/select2.full.min.js"></script>
 <!-- ChartJS -->
 <script src="<?= base_url('themes'); ?>/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -28,3 +30,9 @@
 <script src="<?= base_url('themes'); ?>/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('themes'); ?>/dist/js/adminlte.js"></script>
+
+<script>
+    $(function() {
+        $('.select2').select2();
+    })
+</script>

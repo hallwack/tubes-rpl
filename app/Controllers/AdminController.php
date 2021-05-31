@@ -6,6 +6,6 @@ class AdminController extends BaseController
 {
     public function index()
     {
-        return view('admin/transaction_table');
+        return view('admin/insert_users');
     }
 }
