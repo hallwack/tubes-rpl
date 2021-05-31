@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?= view('auth/_partials/head'); ?>
+<?= $this->include('auth/_partials/head'); ?>
 
 <body class="hold-transition register-page">
     <div class="register-box">
@@ -59,7 +59,7 @@
     </div>
     <!-- /.register-box -->
 
-    <?= view('auth/_partials/script'); ?>
+    <?= $this->include('auth/_partials/script'); ?>
 </body>
 
 </html>

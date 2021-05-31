@@ -6,6 +6,6 @@ class AdminController extends BaseController
 {
     public function index()
     {
-        return view('admin/template');
+        return view('admin/content');
     }
 }

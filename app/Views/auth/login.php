@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?= view('auth/_partials/head'); ?>
+<?= $this->include('auth/_partials/head'); ?>
 
 <body class="hold-transition login-page">
     <div class="login-box">
@@ -47,7 +47,7 @@
     </div>
     <!-- /.login-box -->
 
-    <?= view('auth/_partials/script'); ?>
+    <?= $this->include('auth/_partials/script'); ?>
 </body>
 
 </html>

@@ -33,8 +33,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'PageController::index');
 
-$routes->group('/admin', function ($routes) {
-	$routes->get('/index', 'AdminController::index');
+$routes->group('admin', function ($routes) {
+	$routes->get('index', 'AdminController::index');
 });
 
 $routes->get('/login', 'AuthController::login');
