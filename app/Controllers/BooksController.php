@@ -7,11 +7,11 @@ class BooksController extends BaseController
     public function index()
     {
         $bookModel = new \App\Models\BookModel();
-
-        $book = $bookModel->findAll();
+        $books = $bookModel->findAll();
 
         $data = [
             'title' => 'Daftar Buku',
+            'books' => $books,
         ];
         return view('admin/books/index', $data);
     }
