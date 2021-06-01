@@ -34,7 +34,10 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'PageController::index');
 
 $routes->group('admin', function ($routes) {
-	$routes->get('index', 'AdminController::index');
+	$routes->group('book', function ($routes) {
+		$routes->get('index', 'BooksController::index');
+		$routes->get('edit', 'BooksController::edit');
+	});
 });
 
 $routes->get('/login', 'AuthController::login');

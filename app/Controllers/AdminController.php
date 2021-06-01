@@ -6,6 +6,9 @@ class AdminController extends BaseController
 {
     public function index()
     {
-        return view('admin/insert_users');
+        $data = [
+            'title' => 'Admin | Sistem Pengelolaan Penjualan Buku',
+        ];
+        return view('admin/insert_users', $data);
     }
 }

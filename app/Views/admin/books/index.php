@@ -9,7 +9,7 @@
                     <h3 class="card-title">Daftar Buku</h3>
 
                     <div class="card-tools ml-auto">
-                        <a href=""><button type="button" class="btn btn-block btn-outline-primary">Insert New Book</button></a>
+                        <a href="/admin/book/edit"><button type="button" class="btn btn-block btn-outline-primary">Insert New Book</button></a>
                     </div>
                 </div>
                 <!-- /.card-header -->
