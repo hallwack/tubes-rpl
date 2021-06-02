@@ -28,9 +28,10 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 1; ?>
                             <?php foreach ($books as $book) : ?>
                                 <tr>
-                                    <td>1.</td>
+                                    <td><?= $i++; ?></td>
                                     <td><?= $book['book_name']; ?></td>
                                     <td><img src="/tubes/assets/<?= $book['book_image']; ?>" alt="" style="width: 70%;"></td>
                                     <td>Shonen</td>

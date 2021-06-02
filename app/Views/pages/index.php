@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="<?= base_url('tubes'); ?>/src/main.css" />
-    <title>Sistem Pembelian Buku</title>
+    <title><?= $title; ?> | Sistem Pembelian Buku</title>
 </head>
 
 <body>
@@ -52,90 +52,24 @@
 
         <main class="my-3">
             <div class="row row-cols-1 row-cols-md-4 g-4">
-
-                <div class="col">
-                    <div class="card" style="width: 18rem">
-                        <img src="<?= base_url('tubes'); ?>/assets/initial-d.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h4 class="card-title">Naruto</h4>
-                            <div class="mt-3">
-                                <button type="button" class="
-                                            btn btn-outline-primary
-                                            me-2
-                                            px-3
-                                        " data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    Detail
-                                </button>
-                                <button type="button" id="add-to-cart" class="btn btn-primary px-3" data-name="Naruto" data-price="19000">
-                                    Put in Cart
-                                </button>
+                <?php foreach ($books as $book) : ?>
+                    <div class="col">
+                        <div class="card" style="width: 18rem">
+                            <img src="/tubes/assets/<?= $book['book_image']; ?>" class="card-img-top" alt="..." />
+                            <div class="card-body">
+                                <h4 class="card-title"><?= $book['book_name']; ?></h4>
+                                <div class="mt-3">
+                                    <button type="button" id="detailSet" class="btn btn-outline-primary me-2 px-3 button-edit" data-bs-toggle="modal" data-bs-target="#detailModal" data-name="<?= $book['book_name']; ?>" data-description="<?= $book['book_description']; ?>" data-price="<?= $book['book_price']; ?>" data-image="/tubes/assets/<?= $book['book_image']; ?>" data-category="<?= $book['book_category']; ?>">
+                                        Detail
+                                    </button>
+                                    <button type="button" id="add-to-cart" class="btn btn-primary px-3" data-name="<?= $book['book_name']; ?>" data-price="<?= $book['book_price']; ?>">
+                                        Put in Cart
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col">
-                    <div class="card" style="width: 18rem">
-                        <img src="<?= base_url('tubes'); ?>/assets/one-piece.png" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h4 class="card-title">Naruto</h4>
-                            <div class="mt-3">
-                                <button type="button" class="
-                                            btn btn-outline-primary
-                                            me-2
-                                            px-3
-                                        " data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    Detail
-                                </button>
-                                <button type="button" id="add-to-cart" class="btn btn-primary px-3" data-name="Naruto" data-price="19000">
-                                    Put in Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card" style="width: 18rem">
-                        <img src="<?= base_url('tubes'); ?>/assets/persona-5.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h4 class="card-title">Naruto</h4>
-                            <div class="mt-3">
-                                <button type="button" class="
-                                            btn btn-outline-primary
-                                            me-2
-                                            px-3
-                                        " data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    Detail
-                                </button>
-                                <button type="button" id="add-to-cart" class="btn btn-primary px-3" data-name="Naruto" data-price="19000">
-                                    Put in Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card" style="width: 18rem">
-                        <img src="<?= base_url('tubes'); ?>/assets/nisekoi.jpg" class="card-img-top" alt="..." />
-                        <div class="card-body">
-                            <h4 class="card-title">Naruto</h4>
-                            <div class="mt-3">
-                                <button type="button" class="
-                                            btn btn-outline-primary
-                                            me-2
-                                            px-3
-                                        " data-bs-toggle="modal" data-bs-target="#detailModal">
-                                    Detail
-                                </button>
-                                <button type="button" id="add-to-cart" class="btn btn-primary px-3" data-name="Naruto" data-price="19000">
-                                    Put in Cart
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                <?php endforeach; ?>
             </div>
         </main>
     </div>
@@ -154,34 +88,18 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="<?= base_url('tubes'); ?>/assets/initial-d.jpg" class="card-img-top" alt="..." />
+                            <img id="image" src="" class="card-img-top" alt="..." />
                         </div>
                         <div class="col-md-8">
                             <div class="row">
-                                <h2>Initial D</h2>
+                                <h2 id="name"></h2>
                             </div>
                             <div class="row">
-                                <p>
-                                    The story is about 18 year old Takumi
-                                    Fujiwara who is an average high school
-                                    kid. His father, Bunta Fujiwara, owns a
-                                    tofu shop and Takumi is the delivery
-                                    boy. He uses his father's Panda 1984
-                                    Toyota Sprinter Trueno GT-APEX AE86 to
-                                    do the deliveries. Takumi hated driving
-                                    because he was forced to drive since he
-                                    was in middle school. The deliveries
-                                    train his extraordinary driving skills.
-                                    His friends learn about his skills, and
-                                    introduce Takumi into the world of Touge
-                                    racing. Takumi eventually loves street
-                                    racing, and driving altogether, and then
-                                    he has only one priority: To become the
-                                    best driver in the Gunma Prefecture.
-                                </p>
+                                <p id="description"></p>
                             </div>
                             <div class="row">
-                                <h5>Category: Shounen, Race</h5>
+                                <h5 id="category"></h5>
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -190,9 +108,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Close
-                    </button>
-                    <button type="button" class="btn btn-primary" data-name="Naruto" data-price="19000">
-                        Add to Cart
                     </button>
                 </div>
             </div>
@@ -229,7 +144,23 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="<?= base_url('tubes'); ?>/src/app.js"></script>
+    <script src="<?= base_url('tubes'); ?>/src/index.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', "#detailSet", function() {
+                var name = $(this).data('name');
+                var description = $(this).data('description');
+                var price = $(this).data('price');
+                var image = $(this).data('image');
+                var category = $(this).data('category');
+                $('#name').text(name);
+                $('#description').text(description);
+                $('#price').text(price);
+                $('#image').attr('src', image);
+                $('#category').html('Category : ' + category);
+            })
+        })
+    </script>
 </body>
 
 </html>
