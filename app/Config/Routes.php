@@ -32,7 +32,9 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'PageController::index');
-$routes->get('/books/(:segment)', 'PageController::detail/$1');
+$routes->get('/books/check', 'PageController::check');
+$routes->get('/books/add', 'PageController::add');
+$routes->get('/books/clear', 'PageController::clearCart');
 
 $routes->group('admin', function ($routes) {
 	$routes->group('books', function ($routes) {

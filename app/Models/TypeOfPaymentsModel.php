@@ -4,10 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class TransactionModel extends Model
+class TypeOfPaymentsModel extends Model
 {
-	protected $table                = 'transaction';
-	protected $primaryKey           = 'transaction_id';
+	protected $table                = 'type_of_payments';
+	protected $primaryKey           = 'type_of_payment_id';
 	protected $useAutoIncrement     = true;
 	// protected $insertID             = 0;
 	// protected $returnType           = 'array';

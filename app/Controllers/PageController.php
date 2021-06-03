@@ -2,15 +2,21 @@
 
 namespace App\Controllers;
 
-use App\Models\BookModel;
+use App\Models\BooksModel;
 
 class PageController extends BaseController
 {
+
+    public function __construct()
+    {
+        helper('form');
+    }
+
     public function index()
     {
-        $bookModel = new BookModel();
+        $booksModel = new BooksModel();
 
-        $books = $bookModel->getBookCategory()->getResultArray();
+        $books = $booksModel->getBookCategory()->getResultArray();
 
         $data = [
             'title' => 'Index',
@@ -20,12 +26,42 @@ class PageController extends BaseController
         return view('pages/index', $data);
     }
 
-    public function addToCart()
+    public function check()
     {
-        $bookModel = new BookModel();
+        $booksModel = new BooksModel();
 
-        $data = [
-            'name' => $bookModel,
-        ];
+        $cart = \Config\Services::cart();
+
+        $res = $cart->contents();
+
+        echo '<pre>';
+        print_r($res);
+        echo '</pre>';
+        exit;
+    }
+
+    public function add()
+    {
+        $cart = \Config\Services::cart();
+        $cart->insert(array(
+            'id' => $this->request->getPost('id'),
+            'qty' => 1,
+            'price' => $this->request->getPost('price'),
+            'name' => $this->request->getPost('name'),
+            'options' => array(
+                'slug' => $this->request->getPost('slug'),
+                'image' => $this->request->getPost('image'),
+                'author' => $this->request->getPost('author'),
+                'publisher' => $this->request->getPost('publisher'),
+                'description' => $this->request->getPost('description'),
+            )
+        ));
+    }
+
+    public function clearCart()
+    {
+        $cart = \Config\Services::cart();
+
+        $cart->destroy();
     }
 }

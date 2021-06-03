@@ -54,6 +54,17 @@
             <div class="row row-cols-1 row-cols-md-4 g-4">
                 <?php foreach ($books as $book) : ?>
                     <div class="col">
+                        <?php
+                        echo form_open('PageController/add');
+                        echo form_hidden('id', $book['book_id']);
+                        echo form_hidden('price', $book['book_price']);
+                        echo form_hidden('name', $book['book_name']);
+                        echo form_hidden('slug', $book['book_slug']);
+                        echo form_hidden('image', $book['book_image']);
+                        echo form_hidden('author', $book['book_author']);
+                        echo form_hidden('publisher', $book['book_publisher']);
+                        echo form_hidden('description', $book['book_description']);
+                        ?>
                         <div class="card" style="width: 18rem">
                             <img src="/tubes/assets/<?= $book['book_image']; ?>" class="card-img-top" alt="..." />
                             <div class="card-body">
@@ -62,12 +73,13 @@
                                     <button type="button" id="detailSet" class="btn btn-outline-primary me-2 px-3 button-edit" data-bs-toggle="modal" data-bs-target="#detailModal" data-name="<?= $book['book_name']; ?>" data-description="<?= $book['book_description']; ?>" data-price="<?= $book['book_price']; ?>" data-image="/tubes/assets/<?= $book['book_image']; ?>" data-category="<?= $book['book_category']; ?>">
                                         Detail
                                     </button>
-                                    <button type="button" id="add-to-cart" class="btn btn-primary px-3" data-name="<?= $book['book_name']; ?>" data-price="<?= $book['book_price']; ?>">
+                                    <button type="submit" id="add-to-cart" class="btn btn-primary px-3" data-name="<?= $book['book_name']; ?>" data-price="<?= $book['book_price']; ?>">
                                         Put in Cart
                                     </button>
                                 </div>
                             </div>
                         </div>
+                        <? echo form_close(); ?>
                     </div>
                 <?php endforeach; ?>
             </div>

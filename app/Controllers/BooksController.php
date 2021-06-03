@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
-use App\Models\BookModel;
+use App\Models\BooksModel;
 
 class BooksController extends BaseController
 {
     public function index()
     {
-        $bookModel = new BookModel();
-        $books = $bookModel->findAll();
+        $booksModel = new BooksModel();
+        $books = $booksModel->findAll();
 
         $data = [
             'title' => 'Daftar Buku',
@@ -23,7 +23,7 @@ class BooksController extends BaseController
         $data = [
             'title' => 'Edit',
         ];
-        
+
         return view('admin/books/edit', $data);
     }
 }
