@@ -13,16 +13,16 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="judulBuku">Judul Buku</label>
-                                    <input type="text" class="form-control" id="judulBuku" placeholder="Masukkan Judul Buku">
+                                    <label for="bookName">Judul Buku</label>
+                                    <input type="text" class="form-control" id="bookName" placeholder="Masukkan Judul Buku">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="sampulBuku">Sampul Buku</label>
+                                    <label for="bookImage">Sampul Buku</label>
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="sampulBuku">
-                                        <label class="custom-file-label" for="sampulBuku">Choose file</label>
+                                        <input type="file" class="custom-file-input" id="bookImage">
+                                        <label class="custom-file-label" for="bookImage">Choose file</label>
                                     </div>
                                 </div>
                             </div>
@@ -44,22 +44,22 @@
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="pengarangBuku">Pengarang Buku</label>
-                                    <input type="text" class="form-control" id="pengarangBuku" placeholder="Masukkan Pengarang Buku">
+                                    <label for="bookAuthor">Pengarang Buku</label>
+                                    <input type="text" class="form-control" id="bookAuthor" placeholder="Masukkan Pengarang Buku">
                                 </div>
                             </div>
                             <div class="col-4">
                                 <div class="form-group">
-                                    <label for="penerbitBuku">Penerbit Buku</label>
-                                    <input type="text" class="form-control" id="penerbitBuku" placeholder="Masukkan Penerbit Buku">
+                                    <label for="bookPublisher">Penerbit Buku</label>
+                                    <input type="text" class="form-control" id="bookPublisher" placeholder="Masukkan Penerbit Buku">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Textarea</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <label for="bookDescription">Description</label>
+                                    <textarea id="bookDescription" class="form-control" rows="3" placeholder="Enter ..."></textarea>
                                 </div>
                             </div>
                         </div>

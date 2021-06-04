@@ -16,7 +16,7 @@ class PageController extends BaseController
     {
         $booksModel = new BooksModel();
 
-        $books = $booksModel->getBookCategory()->getResultArray();
+        $books = $booksModel->getBooksWithCategory()->getResultArray();
 
         $data = [
             'title' => 'Index',
@@ -43,19 +43,22 @@ class PageController extends BaseController
     public function add()
     {
         $cart = \Config\Services::cart();
-        $cart->insert(array(
+        $getPost = $this->request->getPost();
+
+        // TODO: Cuma bisa ngambil data yang terakhir, seharusnya yang diambil adalah data yang dipilih
+        dd([
             'id' => $this->request->getPost('id'),
             'qty' => 1,
             'price' => $this->request->getPost('price'),
             'name' => $this->request->getPost('name'),
-            'options' => array(
+            'options' => [
                 'slug' => $this->request->getPost('slug'),
                 'image' => $this->request->getPost('image'),
                 'author' => $this->request->getPost('author'),
                 'publisher' => $this->request->getPost('publisher'),
                 'description' => $this->request->getPost('description'),
-            )
-        ));
+            ]
+        ]);
     }
 
     public function clearCart()

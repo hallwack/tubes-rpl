@@ -39,7 +39,28 @@ $routes->get('/books/clear', 'PageController::clearCart');
 $routes->group('admin', function ($routes) {
 	$routes->group('books', function ($routes) {
 		$routes->get('index', 'BooksController::index');
+		$routes->get('add', 'BooksController::add');
 		$routes->get('edit', 'BooksController::edit');
+	});
+	$routes->group('categories', function ($routes) {
+		$routes->get('index', 'BookCategoriesController::index');
+		$routes->get('add', 'BookCategoriesController::add');
+		$routes->get('edit', 'BookCategoriesController::edit');
+	});
+	$routes->group('transactions', function ($routes) {
+		$routes->get('index', 'TransactionsController::index');
+		$routes->get('add', 'TransactionsController::add');
+		$routes->get('edit', 'TransactionsController::edit');
+	});
+	$routes->group('type-of-payments', function ($routes) {
+		$routes->get('index', 'TypeOfPaymentsController::index');
+		$routes->get('add', 'TypeOfPaymentsController::add');
+		$routes->get('edit', 'TypeOfPaymentsController::edit');
+	});
+	$routes->group('users', function ($routes) {
+		$routes->get('index', 'UsersController::index');
+		$routes->get('add', 'UsersController::add');
+		$routes->get('edit', 'UsersController::edit');
 	});
 });
 

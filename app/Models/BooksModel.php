@@ -15,11 +15,12 @@ class BooksModel extends Model
 
     protected $useTimestamps = true;
 
-    public function getBookCategory()
+    public function getBooksWithCategory()
     {
         $builder = $this->db->table('books');
 
-        $builder->select('books.*, book_categories.book_category')->join('book_categories', 'books.book_category_id = book_categories.book_category_id');
+        $builder->select('books.*, book_categories.book_category')
+            ->join('book_categories', 'books.book_category_id = book_categories.book_category_id');
 
         return $builder->get();
     }

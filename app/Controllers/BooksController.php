@@ -18,6 +18,10 @@ class BooksController extends BaseController
         return view('admin/books/index', $data);
     }
 
+    public function add()
+    {
+    }
+
     public function edit()
     {
         $data = [
