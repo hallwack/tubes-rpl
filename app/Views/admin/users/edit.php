@@ -8,52 +8,45 @@
                 <div class="card-header">
                     <h3 class="card-title">Insert Pengguna</h3>
                 </div>
-                <form action="">
+                <form action="/admin/users/update" method="POST">
+                    <input type="hidden" name="id" id="id" value="<?= $users['user_id'] ?>" />
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="namaPengguna">Nama Pengguna</label>
-                                    <input type="text" class="form-control" id="namaPengguna" placeholder="Masukkan Nama Pengguna">
+                                    <label for="name">Nama Pengguna</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Pengguna" value="<?= $users['name']; ?>">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="nomorHpPengguna">No HP Pengguna</label>
-                                    <input type="text" class="form-control" id="nomorHpPengguna" placeholder="Masukkan Nomor HP Pengguna">
+                                    <label for="phone_number">No HP Pengguna</label>
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Masukkan Nomor HP Pengguna" value="<?= $users['phone_number']; ?>">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label>Alamat Pengguna</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    <label for="address">Alamat Pengguna</label>
+                                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter ..."><?= $users['address']; ?></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-6">
                                 <div class="form-group">
-                                    <label>Level Pengguna</label>
-                                    <select class="form-control select2" style="width: 100%;">
+                                    <label for="level">Level Pengguna</label>
+                                    <select class="form-control select2" id="level" name="level" style="width: 100%;">
                                         <option>Admin</option>
                                         <option>User</option>
                                     </select>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="emailPengguna">Email Pengguna</label>
-                                    <input type="email" class="form-control" id="emailPengguna" placeholder="Masukkan Email Pengguna">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label for="passwordPengguna">Password Pengguna</label>
-                                    <input type="password" class="form-control" id="passwordPengguna" placeholder="Masukkan Password Pengguna">
+                                    <label for="email">Email Pengguna</label>
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email Pengguna" value="<?= $users['email']; ?>">
                                 </div>
                             </div>
                         </div>

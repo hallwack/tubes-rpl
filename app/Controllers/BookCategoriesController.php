@@ -18,4 +18,23 @@ class BookCategoriesController extends BaseController
 		];
 		return view('admin/book_categories/index', $data);
 	}
+
+	public function create()
+	{
+		$data = [
+			'title' => 'Create Book Categories',
+		];
+
+		return view('admin/book_categories/create', $data);
+	}
+
+	public function save()
+	{
+
+		$bookCategories = new BookCategoriesModel();
+
+		dd([
+			'name' => $this->request->getPost('name')
+		]);
+	}
 }

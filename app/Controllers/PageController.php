@@ -43,7 +43,6 @@ class PageController extends BaseController
     public function add()
     {
         $cart = \Config\Services::cart();
-        $getPost = $this->request->getPost();
 
         // TODO: Cuma bisa ngambil data yang terakhir, seharusnya yang diambil adalah data yang dipilih
         dd([

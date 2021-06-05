@@ -25,4 +25,15 @@ class TransactionsModel extends Model
 
 		return $builder->get();
 	}
+
+	public function getDetailTransaction()
+	{
+		$builder = $this->db->table('detail_transactions');
+
+		$builder->select('detail_transactions.*, transactions.transaction_id, books.book_name, (detail_transactions.quantity_purchased*books.book_price) as total')
+			->join('transactions', 'detail_transactions.transaction_id = transactions.transaction_id')
+			->join('books', 'detail_transactions.book_id = books.book_id');
+
+		return $builder->get();
+	}
 }

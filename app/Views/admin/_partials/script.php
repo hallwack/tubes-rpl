@@ -35,4 +35,15 @@
     $(function() {
         $('.select2').select2();
     })
+
+    $(document).ready(function() {
+        $(document).on('click', "#detailTransactions", function() {
+            var name = $(this).data('name');
+            var quantity = $(this).data('quantity');
+            var total = $(this).data('total');
+            $('#name').text(name);
+            $('#quantity').text(quantity);
+            $('#total').text(total);
+        })
+    })
 </script>

@@ -20,4 +20,24 @@ class TypeOfPaymentsController extends BaseController
 
 		return view('admin/type_of_payments/index', $data);
 	}
+
+	public function create()
+	{
+		$data = [
+			'title' => 'Create Payment Type'
+		];
+
+		return view('admin/type_of_payments/create', $data);
+	}
+
+	public function save()
+	{
+		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
+
+		// $typeOfPayment = $typeOfPaymentsModel->insert();
+
+		dd([
+			'paymentType' => $this->request->getPost('paymentType'),
+		]);
+	}
 }

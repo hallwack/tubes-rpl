@@ -8,13 +8,13 @@
                 <div class="card-header">
                     <h3 class="card-title">Insert Category</h3>
                 </div>
-                <form action="">
+                <form action="/admin/categories/save" method="POST">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="categoryName">Nama Kategori</label>
-                                    <input type="text" class="form-control" id="categoryName" placeholder="Masukkan Nama Kategori">
+                                    <label for="name">Nama Kategori</label>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Kategori">
                                 </div>
                             </div>
                         </div>

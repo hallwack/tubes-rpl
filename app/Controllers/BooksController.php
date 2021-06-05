@@ -9,7 +9,7 @@ class BooksController extends BaseController
     public function index()
     {
         $booksModel = new BooksModel();
-        $books = $booksModel->findAll();
+        $books = $booksModel->getBooksWithCategory()->getResultArray();
 
         $data = [
             'title' => 'Daftar Buku',

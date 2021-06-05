@@ -9,7 +9,7 @@
                     <h3 class="card-title">Daftar User</h3>
 
                     <div class="card-tools ml-auto">
-                        <a href="/admin/book/edit"><button type="button" class="btn btn-block btn-outline-primary">Insert New User</button></a>
+                        <a href="/admin/users/create"><button type="button" class="btn btn-block btn-outline-primary">Insert New User</button></a>
                     </div>
                 </div>
                 <!-- /.card-header -->

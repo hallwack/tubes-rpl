@@ -44,7 +44,8 @@ $routes->group('admin', function ($routes) {
 	});
 	$routes->group('categories', function ($routes) {
 		$routes->get('index', 'BookCategoriesController::index');
-		$routes->get('add', 'BookCategoriesController::add');
+		$routes->get('create', 'BookCategoriesController::create');
+		$routes->post('save', 'BookCategoriesController::save');
 		$routes->get('edit', 'BookCategoriesController::edit');
 	});
 	$routes->group('transactions', function ($routes) {
@@ -54,13 +55,15 @@ $routes->group('admin', function ($routes) {
 	});
 	$routes->group('type-of-payments', function ($routes) {
 		$routes->get('index', 'TypeOfPaymentsController::index');
-		$routes->get('add', 'TypeOfPaymentsController::add');
+		$routes->get('create', 'TypeOfPaymentsController::create');
+		$routes->post('save', 'TypeOfPaymentsController::save'); //TODO: Belum bisa
 		$routes->get('edit', 'TypeOfPaymentsController::edit');
 	});
 	$routes->group('users', function ($routes) {
 		$routes->get('index', 'UsersController::index');
-		$routes->get('add', 'UsersController::add');
-		$routes->get('edit', 'UsersController::edit');
+		$routes->get('create', 'UsersController::create');
+		$routes->post('save', 'UsersController::save');
+		$routes->get('edit/(:num)', 'UsersController::edit/$1');
 	});
 });
 

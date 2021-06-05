@@ -34,7 +34,7 @@
                                     <td><?= $i++; ?></td>
                                     <td><?= $book['book_name']; ?></td>
                                     <td><img src="/tubes/assets/<?= $book['book_image']; ?>" alt="" style="width: 70%;"></td>
-                                    <td>Shonen</td>
+                                    <td><?= $book['book_category']; ?></td>
                                     <td><?= $book['book_author']; ?></td>
                                     <td><?= $book['book_publisher']; ?></td>
                                     <td><?= $book['book_description']; ?></td>
