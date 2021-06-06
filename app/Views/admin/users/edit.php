@@ -8,20 +8,20 @@
                 <div class="card-header">
                     <h3 class="card-title">Insert Pengguna</h3>
                 </div>
-                <form action="/admin/users/update" method="POST">
+                <form action="/admin/users/update/<?= $users['user_id']; ?>" method="POST">
                     <input type="hidden" name="id" id="id" value="<?= $users['user_id'] ?>" />
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="name">Nama Pengguna</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Pengguna" value="<?= $users['name']; ?>">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Pengguna" value="<?= $users['user_name']; ?>">
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="phone_number">No HP Pengguna</label>
-                                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Masukkan Nomor HP Pengguna" value="<?= $users['phone_number']; ?>">
+                                    <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Masukkan Nomor HP Pengguna" value="<?= $users['user_phone_number']; ?>">
                                 </div>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="address">Alamat Pengguna</label>
-                                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter ..."><?= $users['address']; ?></textarea>
+                                    <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter ..."><?= $users['user_address']; ?></textarea>
                                 </div>
                             </div>
                         </div>
@@ -46,13 +46,14 @@
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="email">Email Pengguna</label>
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email Pengguna" value="<?= $users['email']; ?>">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email Pengguna" value="<?= $users['user_email']; ?>">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="<?= previous_url(); ?>" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-primary float-right">Submit</button>
                     </div>
                 </form>
             </div>

@@ -37,8 +37,8 @@
                                     <td><?= $user['user_level']; ?></td>
                                     <td><?= $user['user_address']; ?></td>
                                     <td class="d-flex flex-column justify-content-center">
-                                        <button type="button" class="btn btn-sm btn-outline-success">Edit</button>
-                                        <button type="button" class="btn btn-sm btn-outline-danger mt-3">Delete</button>
+                                        <a href="/admin/users/edit/<?= $user['user_id']; ?>" class="btn btn-sm btn-outline-success">Edit</a>
+                                        <button data-toggle="modal" data-target="#modal-delete-user" data-user-id="<?= $user['user_id']; ?>" class="btn btn-delete-user btn-sm btn-outline-danger mt-3">Delete</button>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -48,6 +48,32 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+            <form action="/admin/users/delete/<?= $user['user_id']; ?>" method="post">
+                <div class="modal fade" id="modal-delete-user">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete User</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure to delete this user?</p>
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                                <input type="hidden" name="user_id" class="user-id">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </form>
+            <!-- /.modal -->
         </div>
     </div>
 </div>

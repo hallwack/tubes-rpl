@@ -34,31 +34,52 @@ class UsersController extends BaseController
 	{
 		$usersModel = new UsersModel();
 
-		dd([
-			'name' => $this->request->getPost('name'),
-			'phone_number' => $this->request->getPost('phone_number'),
-			'address' => $this->request->getPost('address'),
-			'level' => $this->request->getPost('level'),
-			'email' => $this->request->getPost('email'),
-			'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
+		$usersModel->insert([
+			'user_name' => $this->request->getPost('name'),
+			'user_phone_number' => $this->request->getPost('phone_number'),
+			'user_address' => $this->request->getPost('address'),
+			'user_level' => $this->request->getPost('level'),
+			'user_email' => $this->request->getPost('email'),
+			'user_password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
 		]);
+
+		return redirect()->to('index');
 	}
 
-	// TODO: Data buat edit belum keambil cuy!
 	public function edit($id)
 	{
-		// $usersModel = new UsersModel();
+		$usersModel = new UsersModel();
 
-		// $users = $usersModel->getIdUser($id);
-		// $data = [
-		// 	'title' => 'Edit User',
-		// 	'users' => $users
-		// ];
+		$users = $usersModel->getIdUser($id);
+		$data = [
+			'title' => 'Edit User',
+			'users' => $users
+		];
 
-		// return view('admin/users/edit', $data);
+		return view('admin/users/edit', $data);
 	}
 
-	public function update()
+	public function update($id)
 	{
+		$usersModel = new UsersModel();
+
+		$usersModel->save([
+			'user_id' => $id,
+			'user_name' => $this->request->getPost('name'),
+			'user_phone_number' => $this->request->getPost('phone_number'),
+			'user_address' => $this->request->getPost('address'),
+			'user_level' => $this->request->getPost('level'),
+			'user_email' => $this->request->getPost('email')
+		]);
+
+		return redirect()->to('/admin/users/index');
+	}
+
+	public function delete($id)
+	{
+		$usersModel = new UsersModel();
+
+		$usersModel->delete($id);
+		return redirect()->to('/admin/users/index');
 	}
 }

@@ -10,8 +10,13 @@ class TypeOfPaymentsModel extends Model
 	protected $primaryKey           = 'type_of_payment_id';
 	protected $useAutoIncrement     = true;
 
-	protected $useSoftDeletes       = true;
-	protected $allowedFields        = [];
+	protected $useSoftDeletes       = false;
+	protected $allowedFields        = ['payment_type'];
 
 	protected $useTimestamps        = true;
+
+	public function getIdPaymentType($id = null)
+	{
+		return $this->where('user_id', $id)->first();
+	}
 }

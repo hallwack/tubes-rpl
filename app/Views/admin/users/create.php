@@ -59,7 +59,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="<?= previous_url(); ?>" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-primary float-right">Submit</button>
                     </div>
                 </form>
             </div>

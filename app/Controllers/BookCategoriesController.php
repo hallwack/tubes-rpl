@@ -10,11 +10,11 @@ class BookCategoriesController extends BaseController
 	public function index()
 	{
 		$bookCategoriesModel = new BookCategoriesModel();
-		$book = $bookCategoriesModel->findAll();
 
+		$bookCategories = $bookCategoriesModel->findAll();
 		$data = [
 			'title' => 'Daftar Kategori Buku',
-			'bookCategories' => $book,
+			'bookCategories' => $bookCategories,
 		];
 		return view('admin/book_categories/index', $data);
 	}
@@ -30,11 +30,45 @@ class BookCategoriesController extends BaseController
 
 	public function save()
 	{
-
 		$bookCategories = new BookCategoriesModel();
 
-		dd([
-			'name' => $this->request->getPost('name')
+		$bookCategories->insert([
+			'book_category' => $this->request->getPost('category')
 		]);
+
+		return redirect()->to('index');
+	}
+
+	public function edit($id)
+	{
+		$bookCategoriesModel = new BookCategoriesModel();
+
+		$bookCategories = $bookCategoriesModel->getIdCategory($id);
+		$data = [
+			'title' => 'Edit Book Category',
+			'bookCategories' => $bookCategories
+		];
+
+		return view('admin/book_categories/edit', $data);
+	}
+
+	public function update($id)
+	{
+		$bookCategoriesModel = new BookCategoriesModel();
+
+		$bookCategoriesModel->save([
+			'book_category_id' => $id,
+			'book_category' => $this->request->getPost('category')
+		]);
+
+		return redirect()->to('/admin/categories/index');
+	}
+
+	public function delete($id)
+	{
+		$bookCategoriesModel = new BookCategoriesModel();
+
+		$bookCategoriesModel->delete($id);
+		return redirect()->to('/admin/categories/index');
 	}
 }

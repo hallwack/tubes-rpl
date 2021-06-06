@@ -10,8 +10,13 @@ class BookCategoriesModel extends Model
     protected $primaryKey = 'book_category_id';
     protected $useAutoIncrement = true;
 
-    protected $useSoftDeletes = true;
-    protected $allowedFields = [''];
+    protected $useSoftDeletes = false;
+    protected $allowedFields = ['book_category'];
 
     protected $useTimestamps = true;
+
+    public function getIdCategory($id = null)
+    {
+        return $this->where('book_category_id', $id)->first();
+    }
 }

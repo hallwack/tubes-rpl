@@ -46,4 +46,14 @@
             $('#total').text(total);
         })
     })
+
+    $('.btn-delete-user').on('click', function() {
+        const id = $(this).data('user-id');
+        $('.user-id').val(id);
+    })
+
+    $('.btn-delete-category').on('click', function() {
+        const id = $(this).data('category-id');
+        $('.category-id').val(id);
+    })
 </script>

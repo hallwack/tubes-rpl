@@ -13,14 +13,15 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
-                                    <label for="name">Nama Kategori</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama Kategori">
+                                    <label for="category">Nama Kategori</label>
+                                    <input type="text" class="form-control" id="category" name="category" placeholder="Masukkan Nama Kategori">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="<?= previous_url(); ?>" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-primary float-right">Submit</button>
                     </div>
                 </form>
             </div>

@@ -46,24 +46,30 @@ $routes->group('admin', function ($routes) {
 		$routes->get('index', 'BookCategoriesController::index');
 		$routes->get('create', 'BookCategoriesController::create');
 		$routes->post('save', 'BookCategoriesController::save');
-		$routes->get('edit', 'BookCategoriesController::edit');
+		$routes->get('edit/(:num)', 'BookCategoriesController::edit/$1');
+		$routes->post('update/(:num)', 'BookCategoriesController::update/$1');
+		$routes->post('delete/(:num)', 'BookCategoriesController::delete/$1');
 	});
 	$routes->group('transactions', function ($routes) {
 		$routes->get('index', 'TransactionsController::index');
 		$routes->get('add', 'TransactionsController::add');
 		$routes->get('edit', 'TransactionsController::edit');
 	});
-	$routes->group('type-of-payments', function ($routes) {
-		$routes->get('index', 'TypeOfPaymentsController::index');
+	$routes->group('type-of-payments', function ($routes) { //TODO: Belum bisa
+		$routes->get('index', 'TypeOfPaymentsController::index'); //TODO: Belum bisa
 		$routes->get('create', 'TypeOfPaymentsController::create');
-		$routes->post('save', 'TypeOfPaymentsController::save'); //TODO: Belum bisa
+		$routes->post('save', 'TypeOfPaymentsController::save');
 		$routes->get('edit', 'TypeOfPaymentsController::edit');
+		$routes->post('update/(:num)', 'TypeOfPaymentsController::update/$1'); //TODO: Belum bisa
+		$routes->post('delete/(:num)', 'TypeOfPaymentsController::delete/$1'); //TODO: Belum bisa
 	});
 	$routes->group('users', function ($routes) {
 		$routes->get('index', 'UsersController::index');
 		$routes->get('create', 'UsersController::create');
 		$routes->post('save', 'UsersController::save');
 		$routes->get('edit/(:num)', 'UsersController::edit/$1');
+		$routes->post('update/(:num)', 'UsersController::update/$1');
+		$routes->post('delete/(:num)', 'UsersController::delete/$1');
 	});
 });
 

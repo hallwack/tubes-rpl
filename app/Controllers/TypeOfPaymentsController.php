@@ -34,10 +34,43 @@ class TypeOfPaymentsController extends BaseController
 	{
 		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
 
-		// $typeOfPayment = $typeOfPaymentsModel->insert();
-
-		dd([
-			'paymentType' => $this->request->getPost('paymentType'),
+		$typeOfPaymentsModel->insert([
+			'payment_type' => $this->request->getPost('paymentType'),
 		]);
+
+		return redirect()->to('index');
+	}
+
+	public function edit($id)
+	{
+		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
+
+		$typeOfPayments = $typeOfPaymentsModel->getIdPaymentType($id);
+		$data = [
+			'title' => 'Edit Payment Type',
+			'typeOfPayments' => $typeOfPayments
+		];
+
+		return view('admin/type_of_payments/edit', $data);
+	}
+
+	public function update($id)
+	{
+		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
+
+		$typeOfPaymentsModel->save([
+			'type_of_payment_id' => $id,
+			'payment_type' => $this->request->getPost('paymentType')
+		]);
+
+		return redirect()->to('/admin/type-of-payments/index');
+	}
+
+	public function delete($id)
+	{
+		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
+
+		$typeOfPaymentsModel->delete($id);
+		return redirect()->to('/admin/type-of-payments/index');
 	}
 }
