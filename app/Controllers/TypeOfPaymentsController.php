@@ -45,10 +45,10 @@ class TypeOfPaymentsController extends BaseController
 	{
 		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
 
-		$typeOfPayments = $typeOfPaymentsModel->getIdPaymentType($id);
+		$paymentType = $typeOfPaymentsModel->getIdPaymentType($id);
 		$data = [
 			'title' => 'Edit Payment Type',
-			'typeOfPayments' => $typeOfPayments
+			'payments' => $paymentType
 		];
 
 		return view('admin/type_of_payments/edit', $data);
@@ -66,11 +66,11 @@ class TypeOfPaymentsController extends BaseController
 		return redirect()->to('/admin/type-of-payments/index');
 	}
 
-	public function delete($id)
+	public function delete()
 	{
 		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
 
-		$typeOfPaymentsModel->delete($id);
+		$typeOfPaymentsModel->delete($this->request->getPost('type_of_payment_id'));
 		return redirect()->to('/admin/type-of-payments/index');
 	}
 }

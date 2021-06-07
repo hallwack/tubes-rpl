@@ -64,11 +64,11 @@ class BookCategoriesController extends BaseController
 		return redirect()->to('/admin/categories/index');
 	}
 
-	public function delete($id)
+	public function delete()
 	{
 		$bookCategoriesModel = new BookCategoriesModel();
 
-		$bookCategoriesModel->delete($id);
+		$bookCategoriesModel->delete($this->request->getPost('book_category_id'));
 		return redirect()->to('/admin/categories/index');
 	}
 }

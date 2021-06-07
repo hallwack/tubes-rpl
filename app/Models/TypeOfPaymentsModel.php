@@ -17,6 +17,6 @@ class TypeOfPaymentsModel extends Model
 
 	public function getIdPaymentType($id = null)
 	{
-		return $this->where('user_id', $id)->first();
+		return $this->where('type_of_payment_id', $id)->first();
 	}
 }

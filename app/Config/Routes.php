@@ -33,14 +33,17 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'PageController::index');
 $routes->get('/books/check', 'PageController::check');
-$routes->get('/books/add', 'PageController::add');
+$routes->post('/books/add', 'PageController::add');
 $routes->get('/books/clear', 'PageController::clearCart');
 
 $routes->group('admin', function ($routes) {
 	$routes->group('books', function ($routes) {
 		$routes->get('index', 'BooksController::index');
-		$routes->get('add', 'BooksController::add');
-		$routes->get('edit', 'BooksController::edit');
+		$routes->get('create', 'BooksController::create');
+		$routes->post('save', 'BooksController::save');
+		$routes->get('edit/(:num)', 'BooksController::edit/$1');
+		$routes->post('update/(:num)', 'BooksController::update/$1');
+		$routes->post('delete', 'BooksController::delete');
 	});
 	$routes->group('categories', function ($routes) {
 		$routes->get('index', 'BookCategoriesController::index');
@@ -48,20 +51,20 @@ $routes->group('admin', function ($routes) {
 		$routes->post('save', 'BookCategoriesController::save');
 		$routes->get('edit/(:num)', 'BookCategoriesController::edit/$1');
 		$routes->post('update/(:num)', 'BookCategoriesController::update/$1');
-		$routes->post('delete/(:num)', 'BookCategoriesController::delete/$1');
+		$routes->post('delete', 'BookCategoriesController::delete');
 	});
 	$routes->group('transactions', function ($routes) {
 		$routes->get('index', 'TransactionsController::index');
 		$routes->get('add', 'TransactionsController::add');
 		$routes->get('edit', 'TransactionsController::edit');
 	});
-	$routes->group('type-of-payments', function ($routes) { //TODO: Belum bisa
-		$routes->get('index', 'TypeOfPaymentsController::index'); //TODO: Belum bisa
+	$routes->group('type-of-payments', function ($routes) {
+		$routes->get('index', 'TypeOfPaymentsController::index');
 		$routes->get('create', 'TypeOfPaymentsController::create');
 		$routes->post('save', 'TypeOfPaymentsController::save');
-		$routes->get('edit', 'TypeOfPaymentsController::edit');
+		$routes->get('edit/(:num)', 'TypeOfPaymentsController::edit/$1');
 		$routes->post('update/(:num)', 'TypeOfPaymentsController::update/$1'); //TODO: Belum bisa
-		$routes->post('delete/(:num)', 'TypeOfPaymentsController::delete/$1'); //TODO: Belum bisa
+		$routes->post('delete', 'TypeOfPaymentsController::delete');
 	});
 	$routes->group('users', function ($routes) {
 		$routes->get('index', 'UsersController::index');
@@ -69,7 +72,7 @@ $routes->group('admin', function ($routes) {
 		$routes->post('save', 'UsersController::save');
 		$routes->get('edit/(:num)', 'UsersController::edit/$1');
 		$routes->post('update/(:num)', 'UsersController::update/$1');
-		$routes->post('delete/(:num)', 'UsersController::delete/$1');
+		$routes->post('delete', 'UsersController::delete');
 	});
 });
 

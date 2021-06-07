@@ -8,14 +8,14 @@
                 <div class="card-header">
                     <h3 class="card-title">Insert Payment Type</h3>
                 </div>
-                <form action="/admin/type-of-payments/<?= $typeOfPayments['type_of_payment_id']; ?>">
-                    <input type="hidden" name="id" id="id" value="<?= $typeOfPayments['type_of_payment_id'] ?>" />
+                <form action="/admin/type-of-payments/update/<?= $payments['type_of_payment_id']; ?>" method="POST">
+                    <input type="hidden" name="id" id="id" value="<?= $payments['type_of_payment_id'] ?>" />
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="paymentType">Tipe Pembayaran</label>
-                                    <input type="text" class="form-control" id="paymentType" placeholder="Masukkan Nama Tipe Pembayaran" value="<?= $typeOfPayments['payment_type']; ?>">
+                                    <input type="text" class="form-control" id="paymentType" name="paymentType" placeholder="Masukkan Nama Tipe Pembayaran" value="<?= $payments['payment_type']; ?>">
                                 </div>
                             </div>
                         </div>

@@ -75,11 +75,11 @@ class UsersController extends BaseController
 		return redirect()->to('/admin/users/index');
 	}
 
-	public function delete($id)
+	public function delete()
 	{
 		$usersModel = new UsersModel();
 
-		$usersModel->delete($id);
+		$usersModel->delete($this->request->getPost('user_id'));
 		return redirect()->to('/admin/users/index');
 	}
 }

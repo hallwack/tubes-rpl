@@ -8,15 +8,13 @@
                 <div class="card-header">
                     <h3 class="card-title">Insert Buku</h3>
                 </div>
-                <form action="/admin/books/update/<?= $books['book_id']; ?>" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="id" id="id" value="<?= $book['book_id']; ?>" />
-                    <input type="hidden" name="oldImage" id="oldImage" value="<?= $book['book_image']; ?>" />
+                <form action="/admin/books/save" method="post" enctype="multipart/form-data">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
                                 <div class="form-group">
                                     <label for="name">Judul Buku</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Judul Buku" value="<?= $books['book_name']; ?>">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Judul Buku">
                                 </div>
                             </div>
                             <div class="col-6">

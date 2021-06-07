@@ -48,8 +48,7 @@
                 <!-- /.card-body -->
             </div>
             <!-- /.card -->
-
-            <form action="/admin/users/delete/<?= $user['user_id']; ?>" method="post">
+            <form action="/admin/users/delete" method="post">
                 <div class="modal fade" id="modal-delete-user">
                     <div class="modal-dialog">
                         <div class="modal-content">

@@ -41,7 +41,7 @@
             </div>
             <!-- /.card -->
 
-            <form action="/admin/categories/delete/<?= $bookCategory['book_category_id']; ?>" method="post">
+            <form action="/admin/categories/delete" method="post">
                 <div class="modal fade" id="modal-delete-category">
                     <div class="modal-dialog">
                         <div class="modal-content">

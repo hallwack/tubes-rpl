@@ -56,4 +56,14 @@
         const id = $(this).data('category-id');
         $('.category-id').val(id);
     })
+
+    $('.btn-delete-type-of-payment').on('click', function() {
+        const id = $(this).data('type-of-payment-id');
+        $('.type-of-payment-id').val(id);
+    })
+
+    $('.btn-delete-book').on('click', function() {
+        const id = $(this).data('book-id');
+        $('.book-id').val(id);
+    })
 </script>

@@ -41,7 +41,7 @@
             </div>
             <!-- /.card -->
 
-            <form action="/admin/type-of-payments/delete/<?= $payment['type_of_payment_id']; ?>" method="post">
+            <form action="/admin/type-of-payments/delete" method="post">
                 <div class="modal fade" id="modal-delete-type-of-payment">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -55,7 +55,7 @@
                                 <p>Are you sure to delete this payment type?</p>
                             </div>
                             <div class="modal-footer justify-content-between">
-                                <input type="hidden" name="user_id" class="type-of-payment-id">
+                                <input type="hidden" name="type_of_payment_id" class="type-of-payment-id">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </div>

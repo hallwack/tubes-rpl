@@ -44,9 +44,8 @@ class PageController extends BaseController
     {
         $cart = \Config\Services::cart();
 
-        // TODO: Cuma bisa ngambil data yang terakhir, seharusnya yang diambil adalah data yang dipilih
         dd([
-            'id' => $this->request->getPost('id'),
+            'id' => (int)$this->request->getPost('id'),
             'qty' => 1,
             'price' => $this->request->getPost('price'),
             'name' => $this->request->getPost('name'),
@@ -58,6 +57,10 @@ class PageController extends BaseController
                 'description' => $this->request->getPost('description'),
             ]
         ]);
+    }
+
+    public function show()
+    {
     }
 
     public function clearCart()
