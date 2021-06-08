@@ -134,19 +134,27 @@
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <table id="show-cart" class="table"></table>
-                    <div>Total price: $<span id="total-cart"></span></div>
+                <div class="modal-body" id="cart">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nama Buku</th>
+                                <th scope="col">Harga Buku</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Subtotal</th>
+                                <th scope="col">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="show-cart">
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         Close
                     </button>
-                    <button type="button" id="clear-cart" class="btn btn-primary">
-                        Clear Cart
-                    </button>
                     <button type="button" class="btn btn-primary">
-                        Save changes
+                        Checkout
                     </button>
                 </div>
             </div>
@@ -170,7 +178,42 @@
                 $('#image').attr('src', image);
                 $('#category').html('Category : ' + category);
             })
-        })
+
+            $('#add-to-cart').click(function() {
+                var book_id = $(this).data('id');
+                var book_name = $(this).data('name');
+                var book_price = $(this).data('price');
+                $.ajax({
+                    url: "/books/add",
+                    method: "POST",
+                    data: {
+                        book_id: book_id,
+                        book_name: book_name,
+                        book_price: book_price,
+                    },
+                    success: function(data) {
+                        $('#show-cart').html(data);
+                    }
+                });
+            });
+
+            $(document).on('click', '#delete-cart', function() {
+                var row_id = $(this).data("row-id");
+                $.ajax({
+                    url: "/books/clear",
+                    method: "POST",
+                    data: {
+                        row_id: row_id
+                    },
+                    success: function(data) {
+                        $('#show-cart').html(data);
+                    }
+                });
+            });
+
+            $('#show-cart').load("/books/load");
+
+        });
     </script>
 </body>
 

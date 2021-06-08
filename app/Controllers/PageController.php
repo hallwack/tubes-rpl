@@ -44,7 +44,7 @@ class PageController extends BaseController
     {
         $cart = \Config\Services::cart();
 
-        dd([
+        $data = [
             'id' => (int)$this->request->getPost('id'),
             'qty' => 1,
             'price' => $this->request->getPost('price'),
@@ -56,17 +56,64 @@ class PageController extends BaseController
                 'publisher' => $this->request->getPost('publisher'),
                 'description' => $this->request->getPost('description'),
             ]
-        ]);
+        ];
+
+        $cart->insert($data);
+
+        return redirect()->to('/');
     }
 
     public function show()
     {
+        $cart = \Config\Services::cart();
+        $no = 0;
+        $output = '';
+
+        foreach ($cart->contents() as $items) {
+            $no++;
+            $output .= '
+                            <tr>
+                                <td>' . $items['name'] . '</td>
+                                <td>' . 'Rp ' . number_format($items['price']) . '</td>
+                                <td>
+                                    ' . $items['qty'] . '
+                                </td>
+                                <td>' . 'Rp ' . number_format($items['subtotal']) . '</td>
+                                <td>
+                                    <button type="button" id="delete-cart" data-row-id="' . $items['rowid'] . '" class="btn btn-danger">Hapus Item</button>
+                                </td>
+                            </tr>';
+        }
+
+        $output .= '<tr>
+                        <th colspan="3">Total</th>
+                        <th colspan="2">' . 'Rp ' . number_format($cart->total()) . '</th>
+                    </tr>';
+
+        return $output;
     }
 
-    public function clearCart()
+    public function load()
+    {
+        echo $this->show();
+    }
+
+    public function clear()
+    {
+        $cart = \Config\Services::cart();
+        $row_id = $this->request->getPost('row_id');
+
+        $cart->remove($row_id);
+
+        return $this->show();
+    }
+
+    public function clearAll()
     {
         $cart = \Config\Services::cart();
 
         $cart->destroy();
+
+        return redirect()->to('/');
     }
 }

@@ -34,7 +34,9 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'PageController::index');
 $routes->get('/books/check', 'PageController::check');
 $routes->post('/books/add', 'PageController::add');
-$routes->get('/books/clear', 'PageController::clearCart');
+$routes->get('/books/load', 'PageController::load');
+$routes->post('/books/clear', 'PageController::clear');
+$routes->post('/books/clearAll', 'PageController::clearAll');
 
 $routes->group('admin', function ($routes) {
 	$routes->group('books', function ($routes) {
@@ -63,7 +65,7 @@ $routes->group('admin', function ($routes) {
 		$routes->get('create', 'TypeOfPaymentsController::create');
 		$routes->post('save', 'TypeOfPaymentsController::save');
 		$routes->get('edit/(:num)', 'TypeOfPaymentsController::edit/$1');
-		$routes->post('update/(:num)', 'TypeOfPaymentsController::update/$1'); //TODO: Belum bisa
+		$routes->post('update/(:num)', 'TypeOfPaymentsController::update/$1');
 		$routes->post('delete', 'TypeOfPaymentsController::delete');
 	});
 	$routes->group('users', function ($routes) {
