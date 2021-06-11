@@ -79,7 +79,9 @@ $routes->group('admin', function ($routes) {
 });
 
 $routes->get('/login', 'AuthController::login');
+$routes->post('/loginForm', 'AuthController::loginForm');
 $routes->get('/register', 'AuthController::register');
+$routes->post('/registerForm', 'AuthController::registerForm');
 
 /*
  * --------------------------------------------------------------------

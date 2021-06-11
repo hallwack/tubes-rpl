@@ -40,4 +40,34 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+
+	public $register = [
+		'name' => [
+			'rules' => 'required',
+		],
+		'address' => [
+			'rules' => 'required',
+		],
+		'phoneNumber' => [
+			'rules' => 'required'
+		],
+		'email' => [
+			'rules' => 'required|valid_email|is_unique[users.user_email]',
+		],
+		'password' => [
+			'rules' => 'required|min_length[6]',
+		],
+		'repeatPassword' => [
+			'rules' => 'required|matches[password]',
+		],
+	];
+
+	public $login = [
+		'email' => [
+			'rules' => 'required|valid_email|is_unique[users.user_email]',
+		],
+		'password' => [
+			'rules' => 'required|min_length[6]',
+		],
+	];
 }
