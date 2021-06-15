@@ -33,7 +33,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/books/index" class="nav-link">
+                            <a href="/admin/books" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Daftar Buku
@@ -41,7 +41,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/categories/index" class="nav-link">
+                            <a href="/admin/categories" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Kategori Buku
@@ -60,7 +60,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/transactions/index" class="nav-link">
+                            <a href="/admin/transactions" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Daftar Transaksi
@@ -68,7 +68,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/type-of-payments/index" class="nav-link">
+                            <a href="/admin/type-of-payments" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>
                                     Tipe Pembayaran
@@ -78,7 +78,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/kanban.html" class="nav-link">
+                    <a href="/admin/users" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             Customer

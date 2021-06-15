@@ -8,6 +8,16 @@ class AuthController extends BaseController
 {
     public function login()
     {
+
+        if (\Config\Services::session()->has('email')) {
+
+            if (\Config\Services::session()->get('level') == 'Admin') {
+                return redirect()->to('/admin');
+            } else {
+                return redirect()->to('/');
+            }
+        }
+
         return view('auth/login');
     }
 
@@ -37,7 +47,9 @@ class AuthController extends BaseController
                     'user_level' => 'User'
                 ];
 
-                dd($data);
+                $userModel->insert($data);
+
+                return redirect()->to('/login');
             }
 
             $session->setFlashdata('errors', $errors);
@@ -51,21 +63,28 @@ class AuthController extends BaseController
         $validation = \Config\Services::validation();
         $usersModel = new UsersModel();
 
+
         if ($this->request->getPost()) {
             $data = $this->request->getPost();
             $validate = $validation->run($data, 'login');
             $errors = $validation->getErrors();
 
-            if ($errors) {
-                return redirect()->to('/login');
+            if (!$errors) {
+                $email =  $this->request->getPost('email');
+                $password = $this->request->getPost('password');
+
+                $usersModel->login($email, $password);
             }
 
-            $data = [
-                'email' => $this->request->getPost('email'),
-                'password' => $this->request->getPost('password'),
-            ];
-
-            $user = $usersModel->where('email', $data['email'])->first();
+            $session->setFlashdata('errors', $errors);
         }
+
+        return redirect()->to('/login');
+    }
+
+    public function logout()
+    {
+        \Config\Services::session()->destroy();
+        return redirect()->to('/login');
     }
 }

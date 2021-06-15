@@ -64,7 +64,7 @@ class Validation
 
 	public $login = [
 		'email' => [
-			'rules' => 'required|valid_email|is_unique[users.user_email]',
+			'rules' => 'required|valid_email',
 		],
 		'password' => [
 			'rules' => 'required|min_length[6]',

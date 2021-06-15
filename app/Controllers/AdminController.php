@@ -9,6 +9,6 @@ class AdminController extends BaseController
         $data = [
             'title' => 'Admin | Sistem Pengelolaan Penjualan Buku',
         ];
-        return view('admin/insert_users', $data);
+        return view('admin/template', $data);
     }
 }

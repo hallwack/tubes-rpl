@@ -19,4 +19,40 @@ class UsersModel extends Model
 	{
 		return $this->where('user_id', $id)->first();
 	}
+
+	public function login($email, $password)
+	{
+		$session = \Config\Services::session();
+
+		$query = $this->db->table('users')->where('user_email', $email);
+		$result = $query->get()->getRowArray();
+
+		if ($result) {
+			$isPasswordTrue = password_verify($password, $result['user_password']);
+			$isAdmin = $result['user_level'] == 'Admin';
+			$isUser = $result['user_level'] == 'User';
+
+			if ($isPasswordTrue && $isAdmin) {
+				$session_data = [
+					'email' => $email,
+					'level' => $result['user_level'],
+				];
+
+				$session->set($session_data);
+				return redirect()->to('/admin');
+			}
+
+			if ($isPasswordTrue && $isUser) {
+				$session_data = [
+					'email' => $email,
+					'level' => $result['user_level'],
+				];
+
+				$session->set($session_data);
+				return redirect()->to('/');
+			}
+		}
+
+		return $session->setFlashdata('errors', 'Data User Tidak Ditemukan');
+	}
 }

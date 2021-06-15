@@ -39,8 +39,11 @@ $routes->post('/books/clear', 'PageController::clear');
 $routes->post('/books/clearAll', 'PageController::clearAll');
 
 $routes->group('admin', function ($routes) {
+
+	$routes->get('/', 'AdminController::index');
+
 	$routes->group('books', function ($routes) {
-		$routes->get('index', 'BooksController::index');
+		$routes->get('/', 'BooksController::index');
 		$routes->get('create', 'BooksController::create');
 		$routes->post('save', 'BooksController::save');
 		$routes->get('edit/(:num)', 'BooksController::edit/$1');
@@ -48,7 +51,7 @@ $routes->group('admin', function ($routes) {
 		$routes->post('delete', 'BooksController::delete');
 	});
 	$routes->group('categories', function ($routes) {
-		$routes->get('index', 'BookCategoriesController::index');
+		$routes->get('/', 'BookCategoriesController::index');
 		$routes->get('create', 'BookCategoriesController::create');
 		$routes->post('save', 'BookCategoriesController::save');
 		$routes->get('edit/(:num)', 'BookCategoriesController::edit/$1');
@@ -56,12 +59,12 @@ $routes->group('admin', function ($routes) {
 		$routes->post('delete', 'BookCategoriesController::delete');
 	});
 	$routes->group('transactions', function ($routes) {
-		$routes->get('index', 'TransactionsController::index');
+		$routes->get('/', 'TransactionsController::index');
 		$routes->get('add', 'TransactionsController::add');
 		$routes->get('edit', 'TransactionsController::edit');
 	});
 	$routes->group('type-of-payments', function ($routes) {
-		$routes->get('index', 'TypeOfPaymentsController::index');
+		$routes->get('/', 'TypeOfPaymentsController::index');
 		$routes->get('create', 'TypeOfPaymentsController::create');
 		$routes->post('save', 'TypeOfPaymentsController::save');
 		$routes->get('edit/(:num)', 'TypeOfPaymentsController::edit/$1');
@@ -69,7 +72,7 @@ $routes->group('admin', function ($routes) {
 		$routes->post('delete', 'TypeOfPaymentsController::delete');
 	});
 	$routes->group('users', function ($routes) {
-		$routes->get('index', 'UsersController::index');
+		$routes->get('/', 'UsersController::index');
 		$routes->get('create', 'UsersController::create');
 		$routes->post('save', 'UsersController::save');
 		$routes->get('edit/(:num)', 'UsersController::edit/$1');
@@ -80,6 +83,7 @@ $routes->group('admin', function ($routes) {
 
 $routes->get('/login', 'AuthController::login');
 $routes->post('/loginForm', 'AuthController::loginForm');
+$routes->get('/logout', 'AuthController::logout');
 $routes->get('/register', 'AuthController::register');
 $routes->post('/registerForm', 'AuthController::registerForm');
 
