@@ -43,7 +43,7 @@ class UsersController extends BaseController
 			'user_password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
 		]);
 
-		return redirect()->to('index');
+		return redirect()->to('/admin/users');
 	}
 
 	public function edit($id)
@@ -72,7 +72,7 @@ class UsersController extends BaseController
 			'user_email' => $this->request->getPost('email')
 		]);
 
-		return redirect()->to('/admin/users/index');
+		return redirect()->to('/admin/users');
 	}
 
 	public function delete()
@@ -80,6 +80,6 @@ class UsersController extends BaseController
 		$usersModel = new UsersModel();
 
 		$usersModel->delete($this->request->getPost('user_id'));
-		return redirect()->to('/admin/users/index');
+		return redirect()->to('/admin/users');
 	}
 }

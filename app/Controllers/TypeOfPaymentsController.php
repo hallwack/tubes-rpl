@@ -38,7 +38,7 @@ class TypeOfPaymentsController extends BaseController
 			'payment_type' => $this->request->getPost('paymentType'),
 		]);
 
-		return redirect()->to('index');
+		return redirect()->to('/admin/type-of-payments');
 	}
 
 	public function edit($id)
@@ -63,7 +63,7 @@ class TypeOfPaymentsController extends BaseController
 			'payment_type' => $this->request->getPost('paymentType')
 		]);
 
-		return redirect()->to('/admin/type-of-payments/index');
+		return redirect()->to('/admin/type-of-payments');
 	}
 
 	public function delete()
@@ -71,6 +71,6 @@ class TypeOfPaymentsController extends BaseController
 		$typeOfPaymentsModel =  new TypeOfPaymentsModel();
 
 		$typeOfPaymentsModel->delete($this->request->getPost('type_of_payment_id'));
-		return redirect()->to('/admin/type-of-payments/index');
+		return redirect()->to('/admin/type-of-payments');
 	}
 }

@@ -36,7 +36,7 @@ class BookCategoriesController extends BaseController
 			'book_category' => $this->request->getPost('category')
 		]);
 
-		return redirect()->to('index');
+		return redirect()->to('/admin/categories');
 	}
 
 	public function edit($id)
@@ -61,7 +61,7 @@ class BookCategoriesController extends BaseController
 			'book_category' => $this->request->getPost('category')
 		]);
 
-		return redirect()->to('/admin/categories/index');
+		return redirect()->to('/admin/categories');
 	}
 
 	public function delete()
@@ -69,6 +69,6 @@ class BookCategoriesController extends BaseController
 		$bookCategoriesModel = new BookCategoriesModel();
 
 		$bookCategoriesModel->delete($this->request->getPost('book_category_id'));
-		return redirect()->to('/admin/categories/index');
+		return redirect()->to('/admin/categories');
 	}
 }

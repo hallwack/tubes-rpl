@@ -11,7 +11,7 @@ class TransactionsModel extends Model
 	protected $useAutoIncrement     = true;
 
 	protected $useSoftDeletes       = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['user_id', 'type_of_payment_id', 'transaction_date', 'transaction_total'];
 
 	protected $useTimestamps        = true;
 

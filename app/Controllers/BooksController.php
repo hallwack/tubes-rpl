@@ -54,7 +54,7 @@ class BooksController extends BaseController
             'book_price' => $this->request->getPost('price'),
         ]);
 
-        return redirect()->to('index');
+        return redirect()->to('/admin/books');
     }
 
     public function edit($id)
@@ -62,9 +62,12 @@ class BooksController extends BaseController
         $booksModel = new BooksModel();
 
         $books = $booksModel->getIdBooks($id);
+        $bookCategories = $booksModel->getBookCategories()->getResultArray();
+
         $data = [
             'title' => 'Edit Book',
-            'books' => $books
+            'books' => $books,
+            'bookCategories' => $bookCategories,
         ];
 
         return view('admin/books/edit', $data);
@@ -95,7 +98,7 @@ class BooksController extends BaseController
             'book_price' => $this->request->getPost('price'),
         ]);
 
-        return redirect()->to('index');
+        return redirect()->to('/admin/books');
     }
 
     public function delete()
@@ -103,6 +106,6 @@ class BooksController extends BaseController
         $booksModel = new BooksModel();
 
         $booksModel->delete($this->request->getPost('book_id'));
-        return redirect()->to('index');
+        return redirect()->to('/admin/books');
     }
 }

@@ -11,7 +11,7 @@ class DetailTransactionsModel extends Model
 	protected $useAutoIncrement     = true;
 
 	protected $useSoftDeletes       = true;
-	protected $allowedFields        = [];
+	protected $allowedFields        = ['transaction_id', 'book_id', 'quantity_purchased', 'total_purchase'];
 
 	protected $useTimestamps        = true;
 }

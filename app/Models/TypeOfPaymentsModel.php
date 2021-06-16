@@ -19,4 +19,9 @@ class TypeOfPaymentsModel extends Model
 	{
 		return $this->where('type_of_payment_id', $id)->first();
 	}
+
+	public function getTypePayments()
+	{
+		return $this->db->table('type_of_payments')->select('*')->get();
+	}
 }

@@ -37,6 +37,7 @@ $routes->post('/books/add', 'PageController::add');
 $routes->get('/books/load', 'PageController::load');
 $routes->post('/books/clear', 'PageController::clear');
 $routes->post('/books/clearAll', 'PageController::clearAll');
+$routes->post('/proses', 'PageController::process');
 
 $routes->group('admin', function ($routes) {
 

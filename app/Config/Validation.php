@@ -70,4 +70,8 @@ class Validation
 			'rules' => 'required|min_length[6]',
 		],
 	];
+
+	public $order = [
+		'order' => 'required',
+	];
 }

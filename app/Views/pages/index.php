@@ -14,6 +14,19 @@
     <title><?= $title; ?> | Sistem Pembelian Buku</title>
 </head>
 
+<?php
+
+$session = \Config\Services::session();
+$cart = \Config\Services::cart();
+
+$errors = $session->getFlashdata('errors');
+
+if ($errors != null) {
+    dd($errors);
+}
+
+?>
+
 <body>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light py-3">
@@ -128,35 +141,42 @@
     <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="cartModalLabel">
-                        Modal title
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="cart">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nama Buku</th>
-                                <th scope="col">Harga Buku</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Subtotal</th>
-                                <th scope="col">Aksi</th>
-                            </tr>
-                        </thead>
-                        <tbody id="show-cart">
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        Checkout
-                    </button>
-                </div>
+                <form action="/proses" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">
+                            Shopping Cart
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="cart">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nama Buku</th>
+                                    <th scope="col">Harga Buku</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Subtotal</th>
+                                    <th scope="col">Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="show-cart">
+                            </tbody>
+                        </table>
+                        <select class="form-select" name="paymentType" aria-label="Selected Payment Type">
+                            <?php foreach ($paymentTypes as $paymentType) : ?>
+                                <option value="<?= $paymentType['type_of_payment_id']; ?>"><?= $paymentType['payment_type']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Checkout
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

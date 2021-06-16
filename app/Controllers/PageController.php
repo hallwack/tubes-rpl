@@ -3,6 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\BooksModel;
+use App\Models\DetailTransactionsModel;
+use App\Models\TransactionsModel;
+use App\Models\TypeOfPaymentsModel;
 
 class PageController extends BaseController
 {
@@ -15,12 +18,15 @@ class PageController extends BaseController
     public function index()
     {
         $booksModel = new BooksModel();
+        $typeOfPaymentsModel = new TypeOfPaymentsModel();
 
         $books = $booksModel->getBooksWithCategory()->getResultArray();
+        $typeOfPayments = $typeOfPaymentsModel->getTypePayments()->getResultArray();
 
         $data = [
             'title' => 'Index',
-            'books' => $books
+            'books' => $books,
+            'paymentTypes' => $typeOfPayments
         ];
 
         return view('pages/index', $data);
@@ -115,5 +121,56 @@ class PageController extends BaseController
         $cart->destroy();
 
         return redirect()->to('/');
+    }
+
+    public function process()
+    {
+        $cart = \Config\Services::cart();
+        $session = \Config\Services::session();
+        $transactionsModel = new TransactionsModel();
+        $detailTransactionsModel = new DetailTransactionsModel();
+
+        $dataUser = [
+            'id' => $session->get('id'),
+            'name' => $session->get('name'),
+            'address' => $session->get('address'),
+            'phone_number' => $session->get('phone_number'),
+            'email' => $session->get('email'),
+        ];
+
+        $carts = $cart->contents();
+
+        if ($carts && $session->has('id')) {
+            $orderData = [
+                'user_id' => $dataUser['id'],
+                'type_of_payment_id' => $this->request->getPost('paymentType'),
+                'transaction_total' => (int)$cart->total(),
+            ];
+
+            $transactionsModel->insert($orderData);
+
+            foreach ($carts as $item) {
+                $detailOrderData = [
+                    'transaction_id' => $transactionsModel->getInsertID(),
+                    'book_id' => $item['id'],
+                    'quantity_purchased' => $item['qty'],
+                    'total_purchase' => (int)$item['subtotal'],
+                ];
+                $detailTransactionsModel->insert($detailOrderData);
+            }
+            $cart->destroy();
+
+            return redirect()->to('/');
+        }
+
+        return redirect()->to('/');
+
+
+
+        // foreach ($carts as $item) {
+        //     echo '<pre>';
+        //     var_dump($item);
+        //     echo '</pre>';
+        // }
     }
 }

@@ -34,6 +34,10 @@ class UsersModel extends Model
 
 			if ($isPasswordTrue && $isAdmin) {
 				$session_data = [
+					'id'	=> $result['user_id'],
+					'name'	=> $result['user_name'],
+					'address' => $result['user_address'],
+					'phone_number' => $result['user_phone_number'],
 					'email' => $email,
 					'level' => $result['user_level'],
 				];
@@ -44,6 +48,10 @@ class UsersModel extends Model
 
 			if ($isPasswordTrue && $isUser) {
 				$session_data = [
+					'id'	=> $result['user_id'],
+					'name'	=> $result['user_name'],
+					'address' => $result['user_address'],
+					'phone_number' => $result['user_phone_number'],
 					'email' => $email,
 					'level' => $result['user_level'],
 				];
