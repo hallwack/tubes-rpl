@@ -38,27 +38,21 @@ if ($errors != null) {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
+                            <a class="nav-link" href="/">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#cartModal">Cart</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#">Hello, User</a>
-                        </li>
+                        <?php if (!$session->get('email')) : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/login">Login</a>
+                            </li>
+                        <?php else : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/logout">Hello, <?= $session->get('name'); ?> (Logout)</a>
+                            </li>
+                        <?php endif; ?>
                     </ul>
-                    <form class="d-flex align-items-center">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success me-2" type="submit">
-                            Search
-                        </button>
-                    </form>
                 </div>
             </div>
         </nav>

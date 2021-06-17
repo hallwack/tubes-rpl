@@ -6,7 +6,7 @@ use CodeIgniter\Filters\FilterInterface;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
-class AuthFilter implements FilterInterface
+class AdminFilter implements FilterInterface
 {
 	/**
 	 * Do whatever processing this filter needs to do.
@@ -25,7 +25,9 @@ class AuthFilter implements FilterInterface
 	 */
 	public function before(RequestInterface $request, $arguments = null)
 	{
-		//
+		if (!(\Config\Services::session()->get('level'))) {
+			return redirect()->to(site_url('login'));
+		}
 	}
 
 	/**
@@ -42,6 +44,8 @@ class AuthFilter implements FilterInterface
 	 */
 	public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
 	{
-		//
+		if (\Config\Services::session()->get('level') == 'Admin') {
+			return redirect()->to('/admin');
+		}
 	}
 }

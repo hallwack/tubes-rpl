@@ -8,16 +8,6 @@ class AuthController extends BaseController
 {
     public function login()
     {
-
-        if (\Config\Services::session()->has('email')) {
-
-            if (\Config\Services::session()->get('level') == 'Admin') {
-                return redirect()->to('/admin');
-            } else {
-                return redirect()->to('/');
-            }
-        }
-
         return view('auth/login');
     }
 
@@ -73,13 +63,13 @@ class AuthController extends BaseController
                 $email =  $this->request->getPost('email');
                 $password = $this->request->getPost('password');
 
-                $usersModel->login($email, $password);
+                return $usersModel->login($email, $password);
             }
 
             $session->setFlashdata('errors', $errors);
         }
 
-        return redirect()->to('/login');
+        // return redirect()->to('/login');
     }
 
     public function logout()
