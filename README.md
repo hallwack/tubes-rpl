@@ -1,5 +1,47 @@
 # CodeIgniter 4 Application Starter
 
+## Important!
+Sebelum menggunakan sistem aplikasi ini, alangkah baiknya mengikuti langkah-langkah berikut.
+
+### Clone Aplikasi
+Lakukan kloning aplikasi dengan menggunakan *script* di bawah ini. (Lakukan perintah tersebut menggunakan terminal)
+```bash
+git clone https://github.com/hallwack/tubes-rpl.git && cd tubes-rpl
+```
+
+## Instalasi *Dependency*
+Lakukan perintah berikut agar aplikasi dapat digunakan secara baik. (Lakukan perintah tersebut menggunakan terminal; Diharapkan pengguna telah menginstall composer sebelumnya)
+```bash
+composer install
+```
+
+### Membuat File .env
+Kloning file ```env``` dan ubah namanya menjadi ```.env```. Lalu ubah isi *code* yang diberi komentar menjadi berikut.
+```.env
+CI_ENVIRONMENT = development
+
+app.baseURL = 'http://localhost:8080/'
+
+database.default.hostname = 127.0.0.1
+database.default.database = {nama database yang ingin dipakai}
+database.default.username = root
+database.default.password = 
+database.default.DBDriver = MySQLi
+database.default.DBPrefix =
+```
+
+### Migrasi Database
+Gunakan *srcipt* dibawah ini untuk menjalankan migrasi. (Lakukan perintah tersebut menggunakan terminal)
+```bash
+php spark migrate
+```
+
+### Menjalankan Aplikasi
+Agar aplikasi bisa dijalankan, jangan lupa untuk menghidupkan *local development server* seperti XAMPP, WAMP, atau LAMP. Setelah itu jalankan local server untuk aplikasi dengan menggunakan *script* di bawah ini.
+```bash
+php spark serve
+```
+
 ## What is CodeIgniter?
 
 CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
