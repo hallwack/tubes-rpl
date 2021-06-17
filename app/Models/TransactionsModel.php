@@ -36,4 +36,29 @@ class TransactionsModel extends Model
 
 		return $builder->get();
 	}
+
+	public function showTransactions($id)
+	{
+		$builder = $this->db->table('transactions');
+
+		$builder->select('transactions.*')->where('transactions.transaction_id', $id);
+		return $builder->get();
+	}
+
+	public function showDetailTransactionOnTransaction($id)
+	{
+		$builder = $this->db->table('detail_transactions');
+
+		$builder->select('detail_transactions.detail_transaction_id, transactions.transaction_id,books.book_name, detail_transactions.quantity_purchased, detail_transactions.total_purchase')
+			->join('books', 'detail_transactions.book_id = books.book_id')
+			->join('transactions', 'detail_transactions.transaction_id = transactions.transaction_id')
+			->where('transactions.transaction_id', $id);
+		return $builder->get();
+
+		// SELECT transactions.transaction_id, detail_transactions.detail_transaction_id, books.book_name, detail_transactions.quantity_purchased, detail_transactions.total_purchase
+		// FROM detail_transactions
+		// JOIN books ON detail_transactions.book_id = books.book_id
+		// JOIN transactions ON detail_transactions.transaction_id = transactions.transaction_id
+		// WHERE transactions.transaction_id = 10
+	}
 }

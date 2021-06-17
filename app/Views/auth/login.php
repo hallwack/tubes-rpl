@@ -31,6 +31,7 @@ $errors = $session->getFlashdata('errors');
                     </div>
                 <?php endif; ?>
                 <form action="/loginForm" method="post">
+                    <?= csrf_field(); ?>
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">

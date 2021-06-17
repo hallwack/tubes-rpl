@@ -61,7 +61,7 @@ $routes->group('admin', function ($routes) {
 	});
 	$routes->group('transactions', function ($routes) {
 		$routes->get('/', 'TransactionsController::index');
-		$routes->get('add', 'TransactionsController::add');
+		$routes->get('show/(:num)', 'TransactionsController::show/$1');
 		$routes->get('edit', 'TransactionsController::edit');
 	});
 	$routes->group('type-of-payments', function ($routes) {

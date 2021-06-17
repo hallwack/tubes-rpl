@@ -74,8 +74,6 @@ class AuthController extends BaseController
                 $password = $this->request->getPost('password');
 
                 $usersModel->login($email, $password);
-
-                return redirect()->to('/');
             }
 
             $session->setFlashdata('errors', $errors);

@@ -68,6 +68,7 @@ if ($errors != null) {
                 <?php foreach ($books as $book) : ?>
                     <div class="col">
                         <form action="/books/add" method="post">
+                            <?= csrf_field(); ?>
                             <input type="hidden" name="id" value="<?= $book['book_id'] ?>" />
                             <input type="hidden" name="name" value="<?= $book['book_name'] ?>" />
                             <input type="hidden" name="price" value="<?= $book['book_price'] ?>" />
@@ -142,6 +143,7 @@ if ($errors != null) {
         <div class="modal-dialog modal-xl modal-dialog-scrollable">
             <div class="modal-content">
                 <form action="/proses" method="post">
+                    <?= csrf_field(); ?>
                     <div class="modal-header">
                         <h5 class="modal-title" id="cartModalLabel">
                             Shopping Cart

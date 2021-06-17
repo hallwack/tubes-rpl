@@ -125,3 +125,6 @@ nb-configuration.xml
 /phpunit*.xml
 /.phpunit.*.cache
 
+# Excluding public/themes build and dist
+!public/themes/build
+!public/themes/dist
