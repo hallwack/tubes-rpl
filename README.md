@@ -9,6 +9,12 @@ Lakukan kloning aplikasi dengan menggunakan *script* di bawah ini. (Lakukan peri
 git clone https://github.com/hallwack/tubes-rpl.git && cd tubes-rpl
 ```
 
+## Instalasi *Dependency*
+Lakukan perintah berikut agar aplikasi dapat digunakan secara baik. (Lakukan perintah tersebut menggunakan terminal; Diharapkan pengguna telah menginstall composer sebelumnya)
+```bash
+composer install
+```
+
 ### Membuat File .env
 Kloning file ```env``` dan ubah namanya menjadi ```.env```. Lalu ubah isi *code* yang diberi komentar menjadi berikut.
 ```.env
