@@ -39,8 +39,8 @@ class BooksController extends BaseController
         $booksModel = new BooksModel();
 
         $image = $this->request->getFile('image');
+        // dd($imageName);
         $image->move('img');
-
         $imageName = $image->getName();
 
         $booksModel->insert([
